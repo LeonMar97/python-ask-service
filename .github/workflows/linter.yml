@@ -1,0 +1,36 @@
+name: lint
+
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+  push:
+    branches:
+      testing
+
+jobs:
+  lint_and_install:
+    name: Run Linting Checks and Installation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10.13
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+
+      - name: Install dependencies
+        run: make install
+
+      - name: Makefile lint
+        run: make lint
+      
+    #   - name: Unittest
+    #     run: mkdir passwords && touch passwords/encrypted-passwords.txt && make test
