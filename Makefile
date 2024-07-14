@@ -1,7 +1,7 @@
 install:poetry.lock pyproject.toml
 	poetry install
-# run: 
-# 	poetry run python python_ask_service/
+run: 
+	poetry run flask -A python_ask_service.backend.app run
 format:
 	poetry run ruff format python_ask_service
 lint:
