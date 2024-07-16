@@ -14,18 +14,20 @@ client = openai.OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),
 )
 
+
 @app.get("/ping")
 def hello():
     return "pong!"
+
 
 @app.post("/ask")
 def ask_question():
     data = request.json
     question_text = data.get("question")
-    
+
     if not question_text:
         return jsonify({"error": "No question provided"}), 400
-    
+
     try:
         response = client.chat.completions.create(
             model="gpt-3.5-turbo", messages=[{"role": "user", "content": question_text}]
@@ -37,6 +39,6 @@ def ask_question():
         db.session.commit()
 
         return jsonify({"answer": answer_text})
-    
+
     except Exception as e:
         return jsonify({"error": str(e)}), 500
