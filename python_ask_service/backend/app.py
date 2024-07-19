@@ -24,10 +24,8 @@ def hello():
 def ask_question():
     data = request.json
     question_text = data.get("question")
-
     if not question_text:
         return jsonify({"error": "No question provided"}), 400
-
     try:
         response = client.chat.completions.create(
             model="gpt-3.5-turbo", messages=[{"role": "user", "content": question_text}]
@@ -42,3 +40,18 @@ def ask_question():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
+# route to check the db data persist correctly
+@app.get("/questions")
+def get_questions():
+    questions = db.session.query(Question).all()  # Query to get all questions
+    questions_list = [
+        {
+            "id": question.id,
+            "question_text": question.question_text,
+            "answer_text": question.answer_text,
+        }
+        for question in questions
+    ]
+    return jsonify(questions_list)

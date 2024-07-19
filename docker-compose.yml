@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  # Define the Flask application service
+  web: 
+    build:
+      context: .  # Build context is the current directory
+      dockerfile: Dockerfile  # Dockerfile for building the Flask image
+    ports:
+      - "4000:4000"  # Map port 4000 of the container to port 4000 on the host
+    depends_on:
+      - db_service  # Ensure the database service starts before the web service
+   
+  # Define the PostgreSQL service
+  db_service:
+    image: postgres:13  # Use the official PostgreSQL image
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persist data in a named volume
+    env_file:
+      - .env  # Load environment variables from the .env file
+    environment:
+      POSTGRES_DB: ${DBNAME}  # Set database name from .env
+      POSTGRES_USER: ${USER}  # Set user from .env
+      POSTGRES_PASSWORD: ${PASSWORD}  # Set password from .env
+
+volumes:
+  postgres_data:  # Named volume to persist PostgreSQL data
