@@ -25,8 +25,8 @@ USER='postgres'
 PASSWORD='your_secure_password'
 PORT='5432'
 HOST=db_service
+DATABASE_URL=postgresql+psycopg2://${USER}:${PASSWORD}@${HOST}:${PORT}/${DBNAME}
 
-DATABASE_URL=postgresql+psycopg2://${USER}:${PASSWORD}@${HOST}:${PORT}/${DBNA.ME} 
 ```
 ## Running the Application
 
@@ -50,8 +50,8 @@ Create a .env just like before, but change the host to local:
 ### in .env
     HOST=localhost
 
-<b style="color: red;">!! dont forget to add password and port aswell
-!!</b>   
+<b style="color: red;">!!dont forget to add password and port aswell!!
+</b>   
 
 run:
 ```bash
