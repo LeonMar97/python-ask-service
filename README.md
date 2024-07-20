@@ -4,6 +4,7 @@ This application provides a REST API that allows users to send questions to Open
 
 ## Features
 
+
 - **POST /ask**: Sends a question to OpenAI and retrieves the answer.
 - **GET /ping**: Checks the connectivity of the application.
 - **GET /questions**: Checks the persistence of the questions in the PostgreSQL database.
