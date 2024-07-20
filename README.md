@@ -25,7 +25,8 @@ USER='postgres'
 PASSWORD='your_secure_password'
 PORT='5432'
 HOST=db_service
-DATABASE_URL=postgresql+psycopg2://${USER}:${PASSWORD}@${HOST}:${PORT}/${DBNA.ME} 
+DATABASE_URL=postgresql+psycopg2://${USER}:${PASSWORD}@${HOST}:${PORT}/${DBNAME}
+
 ```
 ## Running the Application
 
