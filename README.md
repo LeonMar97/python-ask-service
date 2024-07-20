@@ -44,10 +44,14 @@ docker-compose up
 ## Local Development
 
 If you want to run the application locally without Docker:
+Ensure you have Python and Poetry installed.
+Create a .env just like before, but change the host to local:
 
-    Ensure you have Python and Poetry installed.
+### in .env
+    HOST=localhost
 
-    Create a .env just like before, but change the host to local
+<b style="color: red;">!! dont forget to add password and port aswell
+!!</b>   
 
 run:
 ```bash
