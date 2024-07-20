@@ -49,8 +49,8 @@ Create a .env just like before, but change the host to local:
 ### in .env
     HOST=localhost
 
-<b style="color: red;">!!dont forget to add password and port aswell
-<b>   
+<b style="color: red;">!!dont forget to add password and port aswell!!
+</b>   
 
 run:
 ```bash
